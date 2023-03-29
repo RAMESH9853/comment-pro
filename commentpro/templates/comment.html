@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    {% include 'cdnlines.html' %}
+    <style>
+        input[placeholder]{
+            padding: 100px;
+            padding-right: 200px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="offset-md-4 col-md-4 mt-4">
+                <form method="POST" class="mt-4">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <textarea class="form-control" rows="5"  name="comment" placeholder="text comment"></textarea>
+                        </div>
+                    <!-- <input type="text" name="comment" placeholder="text comment"><br> -->
+                    <div class="text-right">
+                    <input type="Submit" value="Comment" class="btn btn-success">
+                    <input type="reset"  value="Cancel" class="btn btn-danger">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div> 
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-4 col-md-4">
+                {% if comm %}
+                <table>
+                    <tbody class="">
+                        {% for i in comm %}
+                        <tr>
+                            <td>
+                            {{ i.comment }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                </table>
+                {% else %}
+                    <h1>No comments</h1>
+                    {% endif %}
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
